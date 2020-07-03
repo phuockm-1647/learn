@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: 7896/civ3-workspace:2.0
+      - image: herloct/phpcs
     steps:
       - checkout
       - run: cp .env.example .env
@@ -11,7 +11,7 @@ jobs:
       - restore_cache:
           keys:
             - vendor-v1-{{ checksum "composer.lock" }}
-      - run:  composer install
+      # - run:  composer install
       - save_cache:
           key: vendor-v1-{{ checksum "composer.lock" }}
           paths:
